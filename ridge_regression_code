@@ -1,18 +1,18 @@
-#libraries 
+# libraries 
 
 import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-#dataset
+# dataset
 
 house_df = pd.read_csv('kc_house_data.csv', encoding = 'ISO-8859-1')
 
-#names of columns
+# names of columns
 house_df.keys()
 
-#features selection
+# features selection
 
 selected_features = ['bedrooms','bathrooms','sqft_living','sqft_lot','floors', 'sqft_above', 'sqft_basement', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'yr_built', 
 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
@@ -20,12 +20,12 @@ selected_features = ['bedrooms','bathrooms','sqft_living','sqft_lot','floors', '
 X = house_df[selected_features]
 y = house_df['price']
 
-#creating the training and testing datasets
+# creating the training and testing datasets
 
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
 
-#training the model - RIDGE REGRESSION
+# training the model - RIDGE REGRESSION
 
 from sklearn.linear_model import Lasso, Ridge
 
@@ -37,7 +37,7 @@ print('Linear Model Coefficient (b): ', regressor_ridge.intercept_)
 y_predict_ridge = regressor_ridge.predict( X_test)
 y_predict_ridge
 
-#visualization 
+# visualization
 
 plt.plot(y_test, y_predict_ridge, "^", color = 'b')
 plt.xlim(0, 3000000)
@@ -48,7 +48,7 @@ plt.ylabel("True Value (ground Truth)")
 plt.title('Ridge Regression Predictions')
 plt.show()
 
-#evaluation
+# model evaluation
 y_predict = y_predict_ridge
 RMSE = float(format(np.sqrt(mean_squared_error(y_test, y_predict)),'.3f'))
 MSE = mean_squared_error(y_test, y_predict)
@@ -59,41 +59,4 @@ adj_r2 = 1-(1-r2)*(n-1)/(n-k-1)
 print('RIDGE:','\nRMSE =',RMSE, '\nMSE =',MSE, '\nMAE =',MAE, '\nR2 =', r2, '\nAdjusted R2 =', adj_r2) 
 
 
-#training the model - LASSO REGRESSION
-
-from sklearn.linear_model import Lasso
-
-regressor_lasso = Lasso(alpha = 500)
-regressor_lasso.fit(X_train,y_train)
-print('Linear Model Coefficient (m): ', regressor_lasso.coef_)
-print('Linear Model Coefficient (b): ', regressor_lasso.intercept_)
-
-y_predict_lasso = regressor_lasso.predict( X_test)
-y_predict_lasso
-
-#visualization 
-
-plt.plot(y_test, y_predict_lasso, "^", color = 'brown')
-plt.xlim(0, 3000000)
-plt.ylim(0, 3000000)
-
-plt.xlabel("Model Predictions")
-plt.ylabel("True Value (ground Truth)")
-plt.title('Lasso Regression Predictions')
-plt.show()
-
-#evaluation
-
-from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
-from math import sqrt
-
-y_predict=y_predict_lasso
-RMSE = float(format(np.sqrt(mean_squared_error(y_test, y_predict)),'.3f'))
-MSE = mean_squared_error(y_test, y_predict)
-MAE = mean_absolute_error(y_test, y_predict)
-r2 = r2_score(y_test, y_predict)
-adj_r2 = 1-(1-r2)*(n-1)/(n-k-1)
-
-print('LASSO:','\nRMSE =',RMSE, '\nMSE =',MSE, '\nMAE =',MAE, '\nR2 =', r2, '\nAdjusted R2 =', adj_r2) 
-
-#DONE!
+# DONE!
