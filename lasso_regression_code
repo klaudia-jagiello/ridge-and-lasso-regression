@@ -9,7 +9,7 @@ import seaborn as sns
 
 house_df = pd.read_csv('kc_house_data.csv', encoding = 'ISO-8859-1')
 
-#names of columns
+# names of columns
 house_df.keys()
 
 # features selection
@@ -63,4 +63,4 @@ adj_r2 = 1-(1-r2)*(n-1)/(n-k-1)
 
 print('LASSO:','\nRMSE =',RMSE, '\nMSE =',MSE, '\nMAE =',MAE, '\nR2 =', r2, '\nAdjusted R2 =', adj_r2) 
 
-#DONE!
+# DONE!
