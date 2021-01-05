@@ -1,5 +1,5 @@
-# ridge-and-lasso-regression
-The houses prices prediction using the ridge and lasso regression models. 
+# Ridge and Lasso Regression Models for predicting houses prices
+
 
 The dataset includes house sale prices for King County in USA which were sold in May, 2014 and May, 2015.
 
