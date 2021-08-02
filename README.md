@@ -4,7 +4,7 @@
 
 Data Source: https://www.kaggle.com/harlfoxem/housesalesprediction
 
-The dataset includes house sale prices for King County in USA which were sold in May, 2014 and May, 2015.
+The dataset includes the house sale prices for King County in USA which were sold in May, 2014 and May, 2015.
 
 The description of the data set headres:
 
